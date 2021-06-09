@@ -1,0 +1,31 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <h2>Simple AirBnb</h2>
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <div class="border p-3 rounded-pill">
+    <%= link_to "Add a flat", new_flat_path %>
+    </div>
+  </div>
+</nav>
+
+<h1>All our flats</h1>
+
+<div class="d-flex">
+  <% @flats.each do |flat| %>
+  <div class="card m-4" style=" width : 23rem;">
+    <img src="https://source.unsplash.com/random" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5> <%= flat.name %></h5>
+      <p> <%= flat.address %></p>
+      <div class="d-flex justify-content-start">
+        <p> <i class="fas fa-user-friends"></i> <%= flat.number_of_guests %></p>
+        <p> <i class="fas fa-dollar-sign"></i> <%= flat.price_per_night %></p>
+      </div>
+    </div>
+    <%= link_to "More info", flat_path(flat) %>
+  </div>
+  <% end %>
+</div>
